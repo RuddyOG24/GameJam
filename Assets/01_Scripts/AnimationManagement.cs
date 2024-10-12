@@ -39,8 +39,11 @@ public class AnimationManagement : MonoBehaviour
             }
             else
             {
-                // Cuando se terminen las imágenes, dispara el evento de fin de animación
-                AnimationEnded?.Invoke();
+                // Si hemos llegado al final de la lista de imágenes, dispara el evento de fin de animación
+                if (AnimationEnded != null)
+                {
+                    AnimationEnded(); // Asegúrate de invocar el evento
+                }
             }
         }
     }

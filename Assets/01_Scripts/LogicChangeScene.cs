@@ -24,6 +24,7 @@ public class LogicChangeScene : MonoBehaviour
     // Este método se llama cuando la animación de imágenes ha terminado
     void OnAnimationEnd()
     {
+        indexLevel = 1;
         ChangeScene(indexLevel);
     }
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1)]
@@ -9,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private const int NUM_LEVELS = 2;
+    private const int NUM_LEVELS = 2;  // Número de niveles
 
     public int level { get; private set; } = 0;
     public int lives { get; private set; } = 3;
@@ -55,16 +54,15 @@ public class GameManager : MonoBehaviour
 
         if (level > NUM_LEVELS)
         {
-            // Start over again at level 1 once you have beaten all the levels
-            // You can also load a "Win" scene instead
-            LoadLevel(1);
+            // Si completaste todos los niveles, ir a la escena "Lobby"
+            SceneManager.LoadScene("Lobby");
             return;
         }
 
         Camera camera = Camera.main;
 
-        // Don't render anything while loading the next scene to create a simple
-        // scene transition effect
+        // No renderiza nada mientras se carga la siguiente escena para crear
+        // un efecto de transición simple entre escenas
         if (camera != null)
         {
             camera.cullingMask = 0;
@@ -90,12 +88,12 @@ public class GameManager : MonoBehaviour
 
         if (lives <= 0)
         {
-            NewGame();
+            // Si las vidas llegan a 0, ir a la escena "Lobby"
+            SceneManager.LoadScene("Lobby");
         }
         else
         {
             LoadLevel(level);
         }
     }
-
 }

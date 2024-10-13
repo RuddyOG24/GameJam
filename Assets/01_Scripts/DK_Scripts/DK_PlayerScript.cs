@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DK_PlayerScript : MonoBehaviour
 {
+
+
     private SpriteRenderer spriteRenderer;
     public Sprite[] runSprites;
     public Sprite climbSprite;
@@ -137,7 +139,6 @@ public class DK_PlayerScript : MonoBehaviour
             }
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Objective"))
@@ -152,5 +153,8 @@ public class DK_PlayerScript : MonoBehaviour
         }
     }
 
+
+
 }
+
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private const int NUM_LEVELS = 2;  // Número de niveles
-
-    public int level { get; private set; } = 0;
     public int lives { get; private set; } = 3;
     public int score { get; private set; } = 0;
 
@@ -37,49 +32,27 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        level = SceneManager.GetActiveScene().buildIndex + 1;
+        // Aquí podrías inicializar cualquier cosa si es necesario
     }
 
-    private void NewGame()
+    public void NewGame()
     {
         lives = 3;
         score = 0;
 
-        LoadLevel(1);
+        LoadLevel();
     }
 
-    private void LoadLevel(int level)
+    private void LoadLevel()
     {
-        this.level = level;
-
-        if (level > NUM_LEVELS)
-        {
-            // Si completaste todos los niveles, ir a la escena "Lobby"
-            SceneManager.LoadScene("Lobby");
-            return;
-        }
-
-        Camera camera = Camera.main;
-
-        // No renderiza nada mientras se carga la siguiente escena para crear
-        // un efecto de transición simple entre escenas
-        if (camera != null)
-        {
-            camera.cullingMask = 0;
-        }
-
-        Invoke(nameof(LoadScene), 1f);
-    }
-
-    private void LoadScene()
-    {
-        SceneManager.LoadScene($"Level{level}");
+        // Cargar el único nivel disponible
+        SceneManager.LoadScene("DonkeyKong"); // Asegúrate de que el nombre de tu nivel sea "Level1"
     }
 
     public void LevelComplete()
     {
         score += 1000;
-        LoadLevel(level + 1);
+        LoadLobby();
     }
 
     public void LevelFailed()
@@ -88,12 +61,16 @@ public class GameManager : MonoBehaviour
 
         if (lives <= 0)
         {
-            // Si las vidas llegan a 0, ir a la escena "Lobby"
-            SceneManager.LoadScene("Lobby");
+            LoadLobby();
         }
         else
         {
-            LoadLevel(level);
+            LoadLevel(); // Reinicia el nivel actual
         }
+    }
+
+    private void LoadLobby()
+    {
+        SceneManager.LoadScene("Lobby"); // Asegúrate de que el nombre de tu lobby sea "Lobby"
     }
 }

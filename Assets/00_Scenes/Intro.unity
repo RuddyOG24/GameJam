@@ -315,7 +315,7 @@ MonoBehaviour:
   - {fileID: 1868759958}
   - {fileID: 366134630}
   - {fileID: 784472089}
-  timeBetweenImages: 5
+  timeBetweenImages: 0.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

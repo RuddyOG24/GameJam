@@ -11,10 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Lobby.unity
     guid: 728f1308481f563478eaba839ba0516d
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Semester1.unity
     guid: 1160836f6b9002d4f957e5fb489c9e24
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Semester2.unity
     guid: fcc15e44a92791148a14c1c4797e407f
+  - enabled: 1
+    path: Assets/00_Scenes/DonkeyKong.unity
+    guid: 2220a240aab647b4380a2fb311c63740
   m_configObjects: {}
